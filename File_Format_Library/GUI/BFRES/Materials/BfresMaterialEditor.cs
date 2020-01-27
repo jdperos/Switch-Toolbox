@@ -58,12 +58,12 @@ namespace FirstPlugin.Forms
                     stTabControl1.TabPages.Add(tabPage);
                     RenderStateEditor = new RenderStateEditor();
                     RenderStateEditor.Dock = DockStyle.Fill;
-                    RenderStateEditor.LoadRenderState(mat.MaterialU.RenderState);
+                    RenderStateEditor.LoadRenderState(mat, mat.MaterialU.RenderState);
                     tabPage.Controls.Add(RenderStateEditor);
                 }
                 else
                 {
-                    RenderStateEditor.LoadRenderState(mat.MaterialU.RenderState);
+                    RenderStateEditor.LoadRenderState(mat, mat.MaterialU.RenderState);
                 }
             }
 

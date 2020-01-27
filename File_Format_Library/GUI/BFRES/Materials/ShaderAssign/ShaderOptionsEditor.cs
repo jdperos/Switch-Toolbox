@@ -48,7 +48,7 @@ namespace FirstPlugin.Forms
             shaderOptionsListView.BackColor = FormThemes.BaseTheme.FormBackColor;
             shaderOptionsListView.ForeColor = FormThemes.BaseTheme.FormForeColor;
 
-            StreamWriter dump = new StreamWriter("C:/Users/Jon/Desktop/Dump/" + material.Text + ".csv");
+            StreamWriter dump = new StreamWriter("C:/Users/Jon/Desktop/Dump/" + material.Text + "_ShaderOptions.csv");
             dump.AutoFlush = true;
             foreach (var option in material.shaderassign.options)
             {

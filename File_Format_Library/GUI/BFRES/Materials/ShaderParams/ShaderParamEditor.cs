@@ -12,6 +12,7 @@ using Syroot.NintenTools.NSW.Bfres;
 using Toolbox.Library.Forms;
 using Toolbox.Library;
 using OpenTK;
+using System.IO;
 
 namespace FirstPlugin.Forms
 {
@@ -33,8 +34,15 @@ namespace FirstPlugin.Forms
             int CurParam = 0;
 
             shaderParamListView.Items.Clear();
+
+
+            StreamWriter dump = new StreamWriter("C:/Users/Jon/Desktop/Dump/" + material.Text + "_ShaderParams.csv");
+            dump.AutoFlush = true;
+
             foreach (BfresShaderParam prm in mat.matparam.Values)
             {
+                WritePrmToDump(prm, dump);
+                
                 var item = new ListViewItem(prm.Name);
                 ShaderParamToListItem(prm, item);
 
@@ -441,6 +449,153 @@ namespace FirstPlugin.Forms
                     }
                 }
             }
+        }
+        private void WritePrmToDump(BfresShaderParam prm, StreamWriter dump)
+        {
+            dump.Write(prm.Name);
+            switch (prm.Type)
+            {
+                case ShaderParamType.Bool:
+                    foreach (bool b in prm.ValueBool)
+                    {
+                        dump.Write("," + b);
+                    }
+                    break;
+                case ShaderParamType.Bool2:
+                    foreach (bool b in prm.ValueBool)
+                    {
+                        dump.Write("," + b);
+                    }
+                    break;
+                case ShaderParamType.Bool3:
+                    foreach (bool b in prm.ValueBool)
+                    {
+                        dump.Write("," + b);
+                    }
+                    break;
+                case ShaderParamType.Bool4:
+                    foreach (bool b in prm.ValueBool)
+                    {
+                        dump.Write("," + b);
+                    }
+                    break;
+                case ShaderParamType.Int:
+                    foreach (int i in prm.ValueInt)
+                    {
+                        dump.Write("," + i);
+                    }
+                    break;
+                case ShaderParamType.Int2:
+                    foreach (int i in prm.ValueInt)
+                    {
+                        dump.Write("," + i);
+                    }
+                    break;
+                case ShaderParamType.Int3:
+                    foreach (int i in prm.ValueInt)
+                    {
+                        dump.Write("," + i);
+                    }
+                    break;
+                case ShaderParamType.Int4:
+                    foreach (int i in prm.ValueInt)
+                    {
+                        dump.Write("," + i);
+                    }
+                    break;
+                case ShaderParamType.UInt:
+                    foreach (uint u in prm.ValueUint)
+                    {
+                        dump.Write("," + u);
+                    }
+                    break;
+                case ShaderParamType.UInt2:
+                    foreach (uint u in prm.ValueUint)
+                    {
+                        dump.Write("," + u);
+                    }
+                    break;
+                case ShaderParamType.UInt3:
+                    foreach (uint u in prm.ValueUint)
+                    {
+                        dump.Write("," + u);
+                    }
+                    break;
+                case ShaderParamType.UInt4:
+                    foreach (uint u in prm.ValueUint)
+                    {
+                        dump.Write("," + u);
+                    }
+                    break;
+                case ShaderParamType.Float:
+                    foreach (float f in prm.ValueFloat)
+                    {
+                        dump.Write("," + f);
+                    }
+                    break;
+                case ShaderParamType.Float2:
+                    foreach (float f in prm.ValueFloat)
+                    {
+                        dump.Write("," + f);
+                    }
+                    break;
+                case ShaderParamType.Float3:
+                    foreach (float f in prm.ValueFloat)
+                    {
+                        dump.Write("," + f);
+                    }
+                    break;
+                case ShaderParamType.Float4:
+                    foreach (float f in prm.ValueFloat)
+                    {
+                        dump.Write("," + f);
+                    }
+                    break;
+                case ShaderParamType.Reserved2:
+                    break;
+                case ShaderParamType.Float2x2:
+                    break;
+                case ShaderParamType.Float2x3:
+                    break;
+                case ShaderParamType.Float2x4:
+                    break;
+                case ShaderParamType.Reserved3:
+                    break;
+                case ShaderParamType.Float3x2:
+                    break;
+                case ShaderParamType.Float3x3:
+                    break;
+                case ShaderParamType.Float3x4:
+                    break;
+                case ShaderParamType.Reserved4:
+                    break;
+                case ShaderParamType.Float4x2:
+                    break;
+                case ShaderParamType.Float4x3:
+                    break;
+                case ShaderParamType.Float4x4:
+                    break;
+                case ShaderParamType.Srt2D:
+                    break;
+                case ShaderParamType.Srt3D:
+                    break;
+                case ShaderParamType.TexSrt:
+                    dump.Write(
+                        "," + prm.ValueTexSrt.Mode +
+                        "," + prm.ValueTexSrt.Scaling.X +
+                        "," + prm.ValueTexSrt.Scaling.Y +
+                        "," + prm.ValueTexSrt.Rotation +
+                        "," + prm.ValueTexSrt.Translation.X +
+                        "," + prm.ValueTexSrt.Translation.Y
+                        );
+                    break;
+                case ShaderParamType.TexSrtEx:
+                    break;
+                default:
+                    dump.Write(",unset type - debug case in ShaderParamEditor.cs");
+                    break;
+            }
+            dump.Write("\n");
         }
     }
 }

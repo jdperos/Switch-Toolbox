@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Bfres.Structs;
 using Toolbox.Library.Forms;
 using Syroot.NintenTools.NSW.Bfres;
+using System.IO;
 
 
 namespace FirstPlugin.Forms
@@ -33,8 +34,40 @@ namespace FirstPlugin.Forms
             renderInfoListView.BeginUpdate();
             renderInfoListView.Items.Clear();
 
+            StreamWriter dump = new StreamWriter("C:/Users/Jon/Desktop/Dump/" + material.Text + "_RenderInfo.csv");
+            dump.AutoFlush = true;
+
             foreach (var rnd in material.renderinfo)
+            {
+                dump.Write(rnd.Name);
+                switch (rnd.Type)
+                {
+                    case RenderInfoType.Int32:
+                        foreach (var item in rnd.ValueInt)
+                        {
+                            dump.Write("," + item);
+                        }
+                        break;
+                    case RenderInfoType.Single:
+                        foreach (var item in rnd.ValueFloat)
+                        {
+                            dump.Write("," + item);
+                        }
+                        break;
+                    case RenderInfoType.String:
+                        foreach (var item in rnd.ValueString)
+                        {
+                            dump.Write("," + item);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                dump.Write("\n");
+
                 renderInfoListView.Items.Add(CreateRenderInfoItem(rnd));
+            }
+                
 
             renderInfoListView.FullRowSelect = true;
             renderInfoListView.EndUpdate();

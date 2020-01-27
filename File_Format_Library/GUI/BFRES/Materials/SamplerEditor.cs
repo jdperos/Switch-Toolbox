@@ -13,6 +13,7 @@ using Bfres.Structs;
 using ResUGX2 = Syroot.NintenTools.Bfres.GX2;
 using ResGFX = Syroot.NintenTools.NSW.Bfres.GFX;
 using ResNX = Syroot.NintenTools.NSW.Bfres;
+using System.IO;
 
 namespace FirstPlugin.Forms
 {
@@ -63,8 +64,12 @@ namespace FirstPlugin.Forms
             textureRefListView.SmallImageList = textureImageList;
             textureRefListView.FullRowSelect = true;
 
+            StreamWriter dump = new StreamWriter("C:/Users/Jon/Desktop/Dump/" + material.Text + "_Textures.txt");
+            dump.AutoFlush = true;
             foreach (MatTexture tex in material.TextureMaps)
             {
+                dump.Write(tex.Name + "," + tex.SamplerName);
+
                 ListViewItem item = new ListViewItem();
                 item.Text = tex.Name;
                 item.SubItems.Add(tex.SamplerName);
@@ -73,7 +78,27 @@ namespace FirstPlugin.Forms
                 {
                     var FragSampler = material.shaderassign.samplers.FirstOrDefault(x => x.Value == tex.SamplerName).Key;
                     item.SubItems.Add(FragSampler.ToString());
+                    dump.Write("," + FragSampler.ToString());
                 }
+                
+                dump.Write("\n");
+                dump.WriteLine("AnimatedTexName: " + tex.animatedTexName);
+                dump.WriteLine("BiasLod: " + tex.BiasLod);
+                dump.WriteLine("MagFilter: " + tex.MagFilter);
+                dump.WriteLine("MapMode: " + tex.mapMode);
+                dump.WriteLine("MaxLod: " + tex.MaxLod);
+                dump.WriteLine("MinFilter: " + tex.MinFilter);
+                dump.WriteLine("MinLod: " + tex.MinLod);
+                dump.WriteLine("SamplerName: " + tex.SamplerName);
+                dump.WriteLine("textureState: " + tex.textureState);
+                dump.WriteLine("textureUnit: " + tex.textureUnit);
+                dump.WriteLine("Type: " + tex.Type);
+                dump.WriteLine("WrapModeS: " + tex.WrapModeS);
+                dump.WriteLine("WrapModeT: " + tex.WrapModeT);
+                dump.WriteLine("WrapModeW: " + tex.WrapModeW);
+                dump.Write("\n");
+
+
 
                 textureRefListView.Items.Add(item);
             }
