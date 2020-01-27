@@ -201,7 +201,7 @@ namespace Toolbox
             dialog.LoadCommits(UpdateProgram.CommitList);
             if (dialog.ShowDialog() == DialogResult.Yes)
             {
-                UpdateApplication();
+                //UpdateApplication();
             }
         }
 
@@ -214,7 +214,7 @@ namespace Toolbox
             proc.StartInfo.CreateNoWindow = false;
             proc.StartInfo.Arguments = "-d -i -b";
             proc.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-            proc.Start();
+            //proc.Start();
             Environment.Exit(0);
         }
         #endregion
