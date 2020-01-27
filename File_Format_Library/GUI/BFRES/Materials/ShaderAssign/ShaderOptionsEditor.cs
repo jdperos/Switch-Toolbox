@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Bfres.Structs;
 using Toolbox.Library.Forms;
 
+using System.IO;
+
 namespace FirstPlugin.Forms
 {
     public partial class ShaderOptionsEditor : UserControl
@@ -46,8 +48,14 @@ namespace FirstPlugin.Forms
             shaderOptionsListView.BackColor = FormThemes.BaseTheme.FormBackColor;
             shaderOptionsListView.ForeColor = FormThemes.BaseTheme.FormForeColor;
 
+            StreamWriter dump = new StreamWriter("C:/Users/Jon/Desktop/Dump/" + material.Text + ".csv");
+            dump.AutoFlush = true;
             foreach (var option in material.shaderassign.options)
+            {
+                dump.WriteLine(option.Key + "," + option.Value);
                 options.Add(new Options() { Name = option.Key, Value = option.Value });
+            }
+                
 
             shaderOptionsListView.SetObjects(options);
             options.Clear();
