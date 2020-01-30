@@ -225,6 +225,7 @@
     <Compile Include="FileFormats\Archives\LZS.cs" />
     <Compile Include="FileFormats\Archives\QuickAccess\QuickAccessFile.cs" />
     <Compile Include="FileFormats\Archives\QuickAccess\QuickAccessFolder.cs" />
+    <Compile Include="FileFormats\Archives\WTA.cs" />
     <Compile Include="FileFormats\BCH\BCH.cs" />
     <Compile Include="FileFormats\BCH\MBN.cs" />
     <Compile Include="FileFormats\BCH\Wrappers\BCHGroupNode.cs" />
@@ -412,6 +413,12 @@
     <Compile Include="GL\BFRES\RedPro\RedPro_Renderer.cs" />
     <Compile Include="GL\BFRES\RedPro\ShaderProgram.cs" />
     <Compile Include="GL\Strikers_Renderer.cs" />
+    <Compile Include="GUI\BCH\BCHAnimationEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\BCH\BCHAnimationEditor.Designer.cs">
+      <DependentUpon>BCHAnimationEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\BCH\BCHMeshEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -503,6 +510,12 @@
     </Compile>
     <Compile Include="GUI\BFRES\Materials\ShaderParams\TexSrtPanel2D.Designer.cs">
       <DependentUpon>TexSrtPanel2D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Byaml\ByamlNodeSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Byaml\ByamlNodeSearch.Designer.cs">
+      <DependentUpon>ByamlNodeSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\GFBMDL\GFLXMaterialEditor.cs">
       <SubType>UserControl</SubType>
@@ -1553,6 +1566,9 @@
     <EmbeddedResource Include="GUI\AttributeEditor.resx">
       <DependentUpon>AttributeEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\BCH\BCHAnimationEditor.resx">
+      <DependentUpon>BCHAnimationEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\BCH\BCHMeshEditor.resx">
       <DependentUpon>BCHMeshEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -1597,6 +1613,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\BFRES\Materials\ShaderParams\TexSrtPanel2D.resx">
       <DependentUpon>TexSrtPanel2D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Byaml\ByamlNodeSearch.resx">
+      <DependentUpon>ByamlNodeSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\GFBMDL\GFLXMaterialEditor.resx">
       <DependentUpon>GFLXMaterialEditor.cs</DependentUpon>
